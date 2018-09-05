@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour {
+public class SamuraiController : MonoBehaviour {
     //移動速度
     private float spd = -0.17f;
     //消滅位置

@@ -16,7 +16,6 @@ public class swordController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("test");
         //enemyに攻撃した場合
         if(other.gameObject.tag == "EnemyTag"){
             //攻撃が当たったらenemyが消える

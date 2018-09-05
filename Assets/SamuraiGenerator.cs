@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGenerator : MonoBehaviour {
+public class SamuraiGenerator : MonoBehaviour {
     //敵のprefab
-    public GameObject enemyPrefab;
+    public GameObject samuraiPrefab;
     //時間計測用の変数
     private float delta = 0;
     //敵の生成間隔
@@ -28,7 +28,7 @@ public class EnemyGenerator : MonoBehaviour {
         if(this.delta > this.span){
             this.delta = 0;
             //敵の生成
-            GameObject go = Instantiate(enemyPrefab) as GameObject;
+            GameObject go = Instantiate(samuraiPrefab) as GameObject;
         }
         //次の敵までの生成時間を決める
         this.span = this.offsetX + this.spaceX;

@@ -39,12 +39,20 @@ public class ZombieController : MonoBehaviour {
         if(this.isEnd){
             Destroy(enemy);
         }
-
-        //待機アニメーションを再生するために、Animatorのパラメータを調整する
-        this.animator.SetFloat("Vertical", -1);
+       
         //着地しているかどうかを調べる
         bool isGround = (transform.position.y > this.groundLevel) ? false : true;
         this.animator.SetBool("isGround", isGround);
+
+        //構え
+        if(Input.GetMouseButtonDown(0)){
+            Debug.Log("test");
+            GetComponent<Animator>().SetTrigger("SetUpTrigger");
+        }else if (Input.GetMouseButtonUp(0)){
+            GetComponent<Animator>().SetTrigger("AttackTrigger");
+            GetComponent<Animator>().SetTrigger("IdleTrigger");
+            
+        }
 
         //着地状態でshiftを押された場合
         if (Input.GetKeyDown(KeyCode.Space) && isGround)
