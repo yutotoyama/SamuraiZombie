@@ -7,6 +7,7 @@ TagManager:
   - DamageObject
   - EnemyTag
   - WeaponTag
+  - SlashingTag
   layers:
   - Default
   - TransparentFX
