@@ -5,11 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/UnityChan2D/Demo/Scenes/Start.unity
+    path: Assets/StartScene.unity
+    guid: 1ee4f72b81eec4ae9bf86dfbac0272e6
   - enabled: 1
-    path: Assets/UnityChan2D/Demo/Scenes/Loading 1-1.unity
+    path: Assets/GameOverScene.unity
+    guid: b82f22f921f0d4e36b609e25da46504f
   - enabled: 1
-    path: Assets/UnityChan2D/Demo/Scenes/Intro 1-1.unity
-  - enabled: 1
-    path: Assets/UnityChan2D/Demo/Scenes/World 1-1.unity
+    path: Assets/GameScene.unity
+    guid: ab3e6ea3c560f42f3add31d7ccd4b075
+  m_configObjects: {}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ZombieController : MonoBehaviour {
     //HP
@@ -13,6 +14,10 @@ public class ZombieController : MonoBehaviour {
     public bool isEnd = false;
     //動きを減速させる係数
     private float coefficient = 0.95f;
+    //ジャンプの速度の減衰
+    private float dump = 0.8f;
+    //ジャンプの速度
+    float jumpVelocity = 20;
 
     private GameObject enemy;
 
@@ -32,10 +37,28 @@ public class ZombieController : MonoBehaviour {
         //構え
         if(Input.GetMouseButtonDown(0)){
             GetComponent<Animator>().SetTrigger("SetUpTrigger");
-        }else if (Input.GetMouseButtonUp(0)){
+        }else if (Input.GetMouseButtonUp(0) && this.rigid2D.velocity.y <= 0)
+        {
             //攻撃
             GetComponent<Animator>().SetTrigger("AttackTrigger");
             GetComponent<Animator>().SetTrigger("IdleTrigger");
+        }
+        else if(Input.GetMouseButton(0)){
+            GetComponent<Animator>().SetTrigger("JumpAttackTrigger");
+        }
+
+        //ジャンプ
+        if(Input.GetKeyDown(KeyCode.Space)){
+            this.rigid2D.velocity = new Vector2(0, this.jumpVelocity);
+            GetComponent<Animator>().SetTrigger("JumpTrigger");
+        }
+
+        //クリックやめたらジャンプ減衰
+        if(Input.GetKey(KeyCode.Space) == false){
+            if(this.rigid2D.velocity.y > 0){
+                this.rigid2D.velocity *= this.dump;
+                GetComponent<Animator>().SetTrigger("IdleTrigger");
+            }
         }
 	}
 
@@ -43,10 +66,12 @@ public class ZombieController : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "EnemyTag" && this.HP > 1){
+            GameObject director = GameObject.Find("GameDirector");
+            director.GetComponent<GameDirector>().DecreaseHP();
             this.HP--;
         }else if(other.gameObject.tag == "EnemyTag" && this.HP <= 1){
             this.isEnd = true;
-            Debug.Log("test");
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 }

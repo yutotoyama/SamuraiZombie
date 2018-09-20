@@ -6,7 +6,7 @@ public class SamuraiController : MonoBehaviour {
     //アニメーションするためのコンポーネントを入れる
     Animator animator;
     //移動速度
-    private float spd = -0.17f;
+    private float spd = -0.12f;
     //消滅位置
     private float deadLine = -10;
 
@@ -31,8 +31,7 @@ public class SamuraiController : MonoBehaviour {
     {
         if(other.gameObject.tag == "SlashingTag"){
             GetComponent<Animator>().SetTrigger("DamageTrigger");
-            Debug.Log("test");
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject, 0.05f);
         }
     }
 }
